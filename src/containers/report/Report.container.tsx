@@ -1,5 +1,5 @@
-// eslint-disable-line react-hooks/exhaustive-deps
-import { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useEffect, useState } from 'react';
 import { HeaderComponent } from '../../components/header/Header.component';
 import { ItemReportComponent } from '../../components/item-report/ItemReport.component';
 import { IReportItems } from '../../interfaces/itemReport.interface';
@@ -9,6 +9,8 @@ import './Report.container.scss';
 export const ReportContainer = () => {
   const [ reportData, setReportData ] = useState<IReportItems[]>()
   const dataReportService = new DataReport();
+
+  
   // const temporalFunction = useRef(() => {})
   
   // this.setState(prevState => ({
@@ -80,41 +82,48 @@ export const ReportContainer = () => {
   // }
 
   // temporalFunction.current = handleGetDataReport
+
+  const getData = useCallback(async() => {
+    try {
+      const { data } = await dataReportService.getDataReport();
+       const formatData = [
+         {
+           id: 1,
+           title: 'ambientTemperture',
+           data: data.ambientTemperture,
+         },
+         {
+           id: 2,
+           title: 'exteriorTemperature',
+           data: data.exteriorTemperature,
+         },
+         {
+           id: 3,
+           title: 'patientTemperature',
+           data: data.patientTemperature,
+         },
+         {
+           id: 4,
+           title: 'risk',
+           data: data.risk
+         }
+       ]
+       setReportData([...formatData]);
+      //  setReportData((oldArray: any) => [...oldArray, formatData]);
+     } catch (error) {
+       console.log('err: ', error);
+     }
+  }, [dataReportService])
   
+  useEffect(() => {
+    getData()
+  }, []);
 
   useEffect(() => {
-    async function getData () {
-      try {
-        const { data } = await dataReportService.getDataReport();
-         const formatData = [
-           {
-             id: 1,
-             title: 'ambientTemperture',
-             data: data.ambientTemperture,
-           },
-           {
-             id: 2,
-             title: 'exteriorTemperature',
-             data: data.exteriorTemperature,
-           },
-           {
-             id: 3,
-             title: 'patientTemperature',
-             data: data.patientTemperature,
-           },
-           {
-             id: 4,
-             title: 'risk',
-             data: data.risk
-           }
-         ]
-         setReportData([...formatData]);
-        //  setReportData((oldArray: any) => [...oldArray, formatData]);
-       } catch (error) {
-         console.log('err: ', error);
-       }
-    }
-    getData()
+    const interval = setInterval(() => {
+      getData()
+    }, 20000);
+    return () => clearInterval(interval);
   }, []);
 
 
