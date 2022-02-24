@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/spike-crud-test/static/css/main.073c9b0a.css",
-    "main.js": "/spike-crud-test/static/js/main.bb63d996.js",
+    "main.css": "/spike-crud-test/static/css/main.1be18c47.css",
+    "main.js": "/spike-crud-test/static/js/main.cbe34662.js",
     "static/js/787.12ca3045.chunk.js": "/spike-crud-test/static/js/787.12ca3045.chunk.js",
-    "static/media/logo.svg": "/spike-crud-test/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/spike-crud-test/index.html",
-    "main.073c9b0a.css.map": "/spike-crud-test/static/css/main.073c9b0a.css.map",
-    "main.bb63d996.js.map": "/spike-crud-test/static/js/main.bb63d996.js.map",
+    "main.1be18c47.css.map": "/spike-crud-test/static/css/main.1be18c47.css.map",
+    "main.cbe34662.js.map": "/spike-crud-test/static/js/main.cbe34662.js.map",
     "787.12ca3045.chunk.js.map": "/spike-crud-test/static/js/787.12ca3045.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.bb63d996.js"
+    "static/css/main.1be18c47.css",
+    "static/js/main.cbe34662.js"
   ]
 }
