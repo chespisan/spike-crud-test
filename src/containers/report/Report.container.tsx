@@ -17,31 +17,31 @@ export const ReportContainer = () => {
 
   const handleGetDataReport = async() => {
     try {
-      const { data } = await dataReportService.getDataReport();
-      const formatData = [
-        {
-          id: 1,
-          title: 'ambientTemperture',
-          data: data.ambientTemperture,
-        },
-        {
-          id: 2,
-          title: 'exteriorTemperature',
-          data: data.exteriorTemperature,
-        },
-        {
-          id: 3,
-          title: 'patientTemperature',
-          data: data.patientTemperature,
-        },
-        {
-          id: 4,
-          title: 'risk',
-          data: data.risk
-        }
-      ]
+      await dataReportService.getDataReport();
+      // const formatData = [
+      //   {
+      //     id: 1,
+      //     title: 'ambientTemperture',
+      //     data: data.ambientTemperture,
+      //   },
+      //   {
+      //     id: 2,
+      //     title: 'exteriorTemperature',
+      //     data: data.exteriorTemperature,
+      //   },
+      //   {
+      //     id: 3,
+      //     title: 'patientTemperature',
+      //     data: data.patientTemperature,
+      //   },
+      //   {
+      //     id: 4,
+      //     title: 'risk',
+      //     data: data.risk
+      //   }
+      // ]
       // setReportData(prev => [...prev, formatData]);
-      setReportData((oldArray: any) => [...oldArray, formatData]);
+      // setReportData((oldArray: any) => [...oldArray, formatData]);
     } catch (error) {
       console.log('err: ', error);
     }
