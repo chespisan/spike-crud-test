@@ -1,5 +1,5 @@
 // eslint-disable-line react-hooks/exhaustive-deps
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { HeaderComponent } from '../../components/header/Header.component';
 import { ItemReportComponent } from '../../components/item-report/ItemReport.component';
 import { IReportItems } from '../../interfaces/itemReport.interface';
@@ -15,37 +15,69 @@ export const ReportContainer = () => {
   //   arrayvar: [...prevState.arrayvar, newelement]
   // }))
 
-  const handleGetDataReport = async() => {
+  const handleGetDataReport = useCallback(async () => {
     try {
-      await dataReportService.getDataReport();
-      // const formatData = [
-      //   {
-      //     id: 1,
-      //     title: 'ambientTemperture',
-      //     data: data.ambientTemperture,
-      //   },
-      //   {
-      //     id: 2,
-      //     title: 'exteriorTemperature',
-      //     data: data.exteriorTemperature,
-      //   },
-      //   {
-      //     id: 3,
-      //     title: 'patientTemperature',
-      //     data: data.patientTemperature,
-      //   },
-      //   {
-      //     id: 4,
-      //     title: 'risk',
-      //     data: data.risk
-      //   }
-      // ]
-      // setReportData(prev => [...prev, formatData]);
-      // setReportData((oldArray: any) => [...oldArray, formatData]);
-    } catch (error) {
-      console.log('err: ', error);
-    }
-  }
+      const { data } = await dataReportService.getDataReport();
+       const formatData = [
+         {
+           id: 1,
+           title: 'ambientTemperture',
+           data: data.ambientTemperture,
+         },
+         {
+           id: 2,
+           title: 'exteriorTemperature',
+           data: data.exteriorTemperature,
+         },
+         {
+           id: 3,
+           title: 'patientTemperature',
+           data: data.patientTemperature,
+         },
+         {
+           id: 4,
+           title: 'risk',
+           data: data.risk
+         }
+       ]
+       // setReportData(prev => [...prev, formatData]);
+       setReportData((oldArray: any) => [...oldArray, formatData]);
+     } catch (error) {
+       console.log('err: ', error);
+     }
+  }, [])
+
+  // const handleGetDataReport = async() => {
+  //   try {
+  //    const { data } = await dataReportService.getDataReport();
+  //     const formatData = [
+  //       {
+  //         id: 1,
+  //         title: 'ambientTemperture',
+  //         data: data.ambientTemperture,
+  //       },
+  //       {
+  //         id: 2,
+  //         title: 'exteriorTemperature',
+  //         data: data.exteriorTemperature,
+  //       },
+  //       {
+  //         id: 3,
+  //         title: 'patientTemperature',
+  //         data: data.patientTemperature,
+  //       },
+  //       {
+  //         id: 4,
+  //         title: 'risk',
+  //         data: data.risk
+  //       }
+  //     ]
+  //     // setReportData(prev => [...prev, formatData]);
+  //     setReportData((oldArray: any) => [...oldArray, formatData]);
+  //   } catch (error) {
+  //     console.log('err: ', error);
+  //   }
+  // }
 
   // temporalFunction.current = handleGetDataReport
   
@@ -53,7 +85,7 @@ export const ReportContainer = () => {
   useEffect(() => {
     handleGetDataReport();
     // temporalFunction.current()
-  }, []);
+  }, [handleGetDataReport]);
 
 
   return (
