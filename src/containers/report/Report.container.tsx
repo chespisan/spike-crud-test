@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { HeaderComponent } from '../../components/header/Header.component';
 import { ItemReportComponent } from '../../components/item-report/ItemReport.component';
 import { IReportItems } from '../../interfaces/itemReport.interface';
-import { DataReport } from '../../services/data-fake/dataFake.services';
+// import { DataReport } from '../../services/data-fake/dataFake.services';
 import './Report.container.scss';
 
 
 
 export const ReportContainer = () => {
-  const [ reportData, setReportData ] = useState<IReportItems[]>()
-  const dataReportService = new DataReport();
+  const [ reportData ] = useState<IReportItems[]>()
+  // const dataReportService = new DataReport();
   
   // const handleGetDataReport = async() => {
   //   try {
