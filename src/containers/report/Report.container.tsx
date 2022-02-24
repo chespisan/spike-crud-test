@@ -40,7 +40,8 @@ export const ReportContainer = () => {
           data: data.risk
         }
       ]
-      setReportData([...formatData]);
+      // setReportData(prev => [...prev, formatData]);
+      setReportData((oldArray: any) => [...oldArray, formatData]);
     } catch (error) {
       console.log('err: ', error);
     }
