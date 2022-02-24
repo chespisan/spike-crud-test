@@ -11,35 +11,35 @@ export const ReportContainer = () => {
   const [ reportData, setReportData ] = useState<IReportItems[]>()
   const dataReportService = new DataReport();
   
-  const handleGetDataReport = async() => {
-    try {
-      const { data } = await dataReportService.getDataReport();
-      setReportData([
-        {
-          id: 1,
-          title: 'ambientTemperture',
-          data: data.ambientTemperture,
-        },
-        {
-          id: 2,
-          title: 'exteriorTemperature',
-          data: data.exteriorTemperature,
-        },
-        {
-          id: 3,
-          title: 'patientTemperature',
-          data: data.patientTemperature,
-        },
-        {
-          id: 4,
-          title: 'risk',
-          data: data.risk
-        }
-      ]);
-    } catch (error) {
-      console.log('err: ', error);
-    }
-  }
+  // const handleGetDataReport = async() => {
+  //   try {
+  //     const { data } = await dataReportService.getDataReport();
+  //     setReportData([
+  //       {
+  //         id: 1,
+  //         title: 'ambientTemperture',
+  //         data: data.ambientTemperture,
+  //       },
+  //       {
+  //         id: 2,
+  //         title: 'exteriorTemperature',
+  //         data: data.exteriorTemperature,
+  //       },
+  //       {
+  //         id: 3,
+  //         title: 'patientTemperature',
+  //         data: data.patientTemperature,
+  //       },
+  //       {
+  //         id: 4,
+  //         title: 'risk',
+  //         data: data.risk
+  //       }
+  //     ]);
+  //   } catch (error) {
+  //     console.log('err: ', error);
+  //   }
+  // }
 
 
   // useEffect(() => {
