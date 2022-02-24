@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { HeaderComponent } from '../../components/header/Header.component';
 import { ItemReportComponent } from '../../components/item-report/ItemReport.component';
-import { IDataFake } from '../../interfaces/dataFake.interface';
 import { IReportItems } from '../../interfaces/itemReport.interface';
 import { DataReport } from '../../services/data-fake/dataFake.services';
 import './Report.container.scss';
@@ -43,9 +42,9 @@ export const ReportContainer = () => {
   }
 
 
-  useEffect(() => {
-    handleGetDataReport()
-  }, []);
+  // useEffect(() => {
+  //   handleGetDataReport()
+  // }, []);
 
 
   return (
