@@ -1,50 +1,50 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HeaderComponent } from '../../components/header/Header.component';
 import { ItemReportComponent } from '../../components/item-report/ItemReport.component';
 import { IReportItems } from '../../interfaces/itemReport.interface';
-// import { DataReport } from '../../services/data-fake/dataFake.services';
+import { DataReport } from '../../services/data-fake/dataFake.services';
 import './Report.container.scss';
 
 
 
 export const ReportContainer = () => {
-  const [ reportData ] = useState<IReportItems[]>()
-  // const dataReportService = new DataReport();
+  const [ reportData, setReportData ] = useState<IReportItems[]>()
+  const dataReportService = new DataReport();
   
-  // const handleGetDataReport = async() => {
-  //   try {
-  //     const { data } = await dataReportService.getDataReport();
-  //     setReportData([
-  //       {
-  //         id: 1,
-  //         title: 'ambientTemperture',
-  //         data: data.ambientTemperture,
-  //       },
-  //       {
-  //         id: 2,
-  //         title: 'exteriorTemperature',
-  //         data: data.exteriorTemperature,
-  //       },
-  //       {
-  //         id: 3,
-  //         title: 'patientTemperature',
-  //         data: data.patientTemperature,
-  //       },
-  //       {
-  //         id: 4,
-  //         title: 'risk',
-  //         data: data.risk
-  //       }
-  //     ]);
-  //   } catch (error) {
-  //     console.log('err: ', error);
-  //   }
-  // }
 
 
-  // useEffect(() => {
-  //   handleGetDataReport()
-  // }, []);
+  useEffect(() => {
+    const handleGetDataReport = async() => {
+      try {
+        const { data } = await dataReportService.getDataReport();
+        setReportData([
+          {
+            id: 1,
+            title: 'ambientTemperture',
+            data: data.ambientTemperture,
+          },
+          {
+            id: 2,
+            title: 'exteriorTemperature',
+            data: data.exteriorTemperature,
+          },
+          {
+            id: 3,
+            title: 'patientTemperature',
+            data: data.patientTemperature,
+          },
+          {
+            id: 4,
+            title: 'risk',
+            data: data.risk
+          }
+        ]);
+      } catch (error) {
+        console.log('err: ', error);
+      }
+    }
+    handleGetDataReport();
+  }, []);
 
 
   return (
