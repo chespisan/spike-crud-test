@@ -1,0 +1,7 @@
+.item-report-component {
+	@apply bg-slate-500 flex flex-col justify-center rounded-md h-20 w-full md:h-28 sm:w-40;
+
+	&__text {
+		@apply flex justify-center items-center text-white;
+	}
+}

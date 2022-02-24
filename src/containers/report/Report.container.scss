@@ -4,12 +4,6 @@
 	@apply bg-slate-200 h-screen;
 
 	&__items {
-		@apply grid grid-cols-4 gap-4 place-items-center my-4;
+		@apply grid grid-cols-1 place-items-center m-4 sm:grid-cols-4 gap-4;
 	}
-}
-
-.item-report-component {
-	@apply bg-slate-500;
-	height: 100px;
-	width: 100px;
 }
