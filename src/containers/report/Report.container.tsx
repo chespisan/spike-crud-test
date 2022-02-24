@@ -1,5 +1,5 @@
 // eslint-disable-line react-hooks/exhaustive-deps
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { HeaderComponent } from '../../components/header/Header.component';
 import { ItemReportComponent } from '../../components/item-report/ItemReport.component';
 import { IReportItems } from '../../interfaces/itemReport.interface';
@@ -9,7 +9,10 @@ import './Report.container.scss';
 export const ReportContainer = () => {
   const [ reportData, setReportData ] = useState<IReportItems[]>()
   const dataReportService = new DataReport();
+  const temporalFunction: any = useRef()
   
+
+
   const handleGetDataReport = async() => {
     try {
       const { data } = await dataReportService.getDataReport();
@@ -40,10 +43,12 @@ export const ReportContainer = () => {
     }
   }
 
+  temporalFunction.current = handleGetDataReport
+  
 
   useEffect(() => {
-    handleGetDataReport()
-  }, []);// eslint-disable-line react-hooks/exhaustive-deps
+    temporalFunction.current()
+  }, []);
 
 
   return (
